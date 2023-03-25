@@ -1,5 +1,3 @@
-import json
-
 import telebot
 
 import json
@@ -26,7 +24,7 @@ class ConvertionException(Exception):
 
 class CryptoConverter:
     @staticmethod
-    def convert(self, quote: str, base: str, amount: str):
+    def convert(quote: str, base: str, amount: str):
         if quote == base:
             raise ConvertionException(f'Невозможно перевести одинаковые валюты {base}.')
 
@@ -51,7 +49,7 @@ class CryptoConverter:
 
 
 @bot.message_handler(commands=['start', 'help'])
-def echo_test(message: telebot.types.Message):
+def help(message: telebot.types.Message):
     text = ' Чтобы начать работу введите боту команду в следующем формате: \n<имя валюты> \
 < в какую валюту перевести> \
 <количество переводимой валюты>\n увидеть список всех доступных валют: /values'
