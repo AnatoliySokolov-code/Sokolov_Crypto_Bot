@@ -28,9 +28,9 @@ class CryptoConverter:
     @staticmethod
     def convert(self, quote: str, base: str, amount: str):
         if quote == base:
-            raise ConvertionException(f'Невозможно перевести одинаковые валюты {base}.'
+            raise ConvertionException(f'Невозможно перевести одинаковые валюты {base}.')
 
-    try:
+        try:
             quote_ticker = keys[quote]
         except KeyError:
             raise ConvertionException(f'Не удалось обработать валюту {quote}')
@@ -73,7 +73,7 @@ def convert(message: telebot.types.Message):
         raise ConvertionException('Вы ввели слишком мало или много параметров.')
 
     quote, base, amount = values
-    total_base = CryptoConverter.convert(quote, base, amount )
+    total_base = CryptoConverter.convert(quote, base, amount)
 
     text = f'Цена {amount} {quote} в {base} - {total_base}'
     bot.send_message(message.chat.id, text)
